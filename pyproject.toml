@@ -1,0 +1,17 @@
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = [
+    "B008",   # FastAPI dependency injection uses call expressions in defaults.
+    "E501",   # Long Chinese error messages are clearer on one line.
+    "SIM105", # Explicit try/except around process/async cleanup is easier to audit.
+    "SIM115", # FFmpeg log handles intentionally live as long as the child process.
+    "UP037",  # SQLAlchemy relationship annotations keep quoted forward refs.
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
